@@ -1,0 +1,116 @@
+{
+  "info": {
+    "_postman_id": "12345678-90ab-cdef-1234-567890abcdef",
+    "name": "Satr-app API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Contact Us - Store",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"johndoe@example.com\",\n  \"mobile\": \"1234567890\",\n  \"message\": \"Hello, I need assistance!\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/contact-us",
+          "host": ["{{base_url}}"],
+          "path": ["api", "contact-us"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Speeches",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/speeches",
+          "host": ["{{base_url}}"],
+          "path": ["api", "speeches"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Speech",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/speeches/1",
+          "host": ["{{base_url}}"],
+          "path": ["api", "speeches", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Pages",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/pages",
+          "host": ["{{base_url}}"],
+          "path": ["api", "pages"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Page",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/pages/1",
+          "host": ["{{base_url}}"],
+          "path": ["api", "pages", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Donations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/donations",
+          "host": ["{{base_url}}"],
+          "path": ["api", "donations"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Donation",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/donations/1",
+          "host": ["{{base_url}}"],
+          "path": ["api", "donations", "1"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    }
+  ]
+}
