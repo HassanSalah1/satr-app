@@ -30,7 +30,7 @@ class AuthController extends Controller
             'password' => Hash::make('password')
         ]);
 
-        return $this->successResponse('Thank you for contacting us!');
+        return $this->successResponse('Login successfully');
     }
 
 
