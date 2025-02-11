@@ -21,7 +21,7 @@ class SpeechResource extends JsonResource
             'date' => $this->date,
             'image' => asset('storage/' . $this->image),
             'status' => $this->status,
-            'youtube_link' => $this->youtube_link,
+            'youtube_link' => $this->link,
         ];
     }
 }

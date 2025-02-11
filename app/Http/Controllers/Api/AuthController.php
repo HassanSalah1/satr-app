@@ -18,7 +18,7 @@ class AuthController extends Controller
 
         // Validate request data
         $validator = Validator::make($request->all(), [
-            'mobile' => 'required|string|max:15',
+            'mobile' => 'required|unique:users|string|max:15',
         ]);
 
         if ($validator->fails()) {

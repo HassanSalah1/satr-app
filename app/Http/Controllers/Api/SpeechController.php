@@ -13,7 +13,11 @@ class SpeechController extends Controller
      */
     public function index()
     {
-        $rows =  SpeechResource::collection(Speech::with('author')->get());
+        $rows =  [
+            'featured' => SpeechResource::collection(Speech::with('author')->get()),
+            'all' => SpeechResource::collection(Speech::with('author')->get()),
+
+        ];
         return $this->successResponse(null, $rows);
     }
 
