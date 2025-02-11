@@ -26,7 +26,7 @@ class AuthController extends Controller
         }
         // Store data in the database
          User::create([
-            'mobile' => $validator->mobile,
+            'mobile' => $request->mobile,
             'password' => Hash::make('password')
         ]);
 

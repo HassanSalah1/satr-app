@@ -3,6 +3,7 @@ use App\Http\Controllers\Api\SpeechController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\DonationController;
 use App\Http\Controllers\Api\ContactUsController;
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('api')->group(function () {
@@ -16,5 +17,6 @@ Route::middleware('api')->group(function () {
     Route::get('/donations/{donation}', [DonationController::class, 'show']);
 
     Route::post('/contact-us', [ContactUsController::class, 'store']);
+    Route::post('/login', [AuthController::class, 'store']);
 });
 
