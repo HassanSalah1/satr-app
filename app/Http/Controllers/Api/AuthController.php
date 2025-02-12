@@ -35,7 +35,7 @@ class AuthController extends Controller
             ]);
         }
 
-        $data = ['code' => 220022];
+        $data = ['code' => "0000"];
         return $this->successResponse('Login successfully', $data);
     }
     public function checkCode(Request $request): JsonResponse
@@ -51,7 +51,7 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return $this->errorResponse($validator->errors()->first(), 422);
         }
-        if ($request->code != 220022) {
+        if ($request->code != "0000") {
             return $this->errorResponse("الكود غير صحيح", 422);
         }
         $user = User::where('mobile', $request->mobile)->first();
