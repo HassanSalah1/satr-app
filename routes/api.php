@@ -18,5 +18,6 @@ Route::middleware('api')->group(function () {
 
     Route::post('/contact-us', [ContactUsController::class, 'store']);
     Route::post('/login', [AuthController::class, 'store']);
+    Route::post('/check-code', [AuthController::class, 'checkCode']);
 });
 
