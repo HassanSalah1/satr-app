@@ -22,14 +22,19 @@ class SpeechResource extends Resource
     protected static ?string $model = Speech::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-microphone';
+    protected static ?string $modelLabel = 'خطبة'; // سيظهر "خطاب" في الواجهة
+    protected static ?string $pluralModelLabel = "الخطب"; // سيظهر "الخطابات" في الواجهة
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->required()->maxLength(255),
+                TextInput::make('name')
+                    ->label(__('name'))
+                    ->required()
+                    ->maxLength(255),
                 Select::make('author_id')
-                    ->label('Author')
+                    ->label(__('author'))
                     ->relationship('author', 'name')
                     ->preload()
                     ->searchable()
@@ -41,11 +46,11 @@ class SpeechResource extends Resource
                         $author = Author::create($data);
                         return $author->id;
                     }),
-                DatePicker::make('date')->required(),
-                TextInput::make('link')->required()->url()->maxLength(255),
-                Toggle::make('status')->default(true),
-                Toggle::make('featured'),
-                FileUpload::make('image')->image(),
+                DatePicker::make('date')->label(__('date'))->required(),
+                TextInput::make('link')->label(__('link'))->required()->url()->maxLength(255),
+                Toggle::make('status')->label(__('status'))->default(true),
+                Toggle::make('featured')->label(__('featured')),
+                FileUpload::make('image')->label(__('image'))->image(),
             ]);
     }
 
@@ -53,12 +58,19 @@ class SpeechResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->sortable()->searchable(),
-                TextColumn::make('author.name')->sortable()->searchable(),
-                TextColumn::make('date')->sortable(),
-                ImageColumn::make('image'),
-                IconColumn::make('status')->boolean(),
-                TextColumn::make('link')->limit(50),
+//                TextColumn::make('name')->sortable()->searchable(),
+//                TextColumn::make('author.name')->sortable()->searchable(),
+//                TextColumn::make('date')->sortable(),
+//                ImageColumn::make('image'),
+//                IconColumn::make('status')->boolean(),
+//                TextColumn::make('link')->limit(50),
+                TextColumn::make('name')->label(__('name'))->sortable()->searchable(), // سيظهر "الاسم"
+                TextColumn::make('author.name')->label(__('author'))->sortable()->searchable(), // سيظهر "المؤلف"
+                TextColumn::make('date')->label(__('date'))->date(), // سيظهر "التاريخ"
+                ImageColumn::make('image')->label(__('image')), // سيظهر "الصورة"
+                Tables\Columns\BooleanColumn::make('status')->label(__('status')), // سيظهر "الحالة"
+                Tables\Columns\BooleanColumn::make('featured')->label(__('featured')), // سيظهر "مميز"
+                TextColumn::make('link')->limit(50)->label(__('link')), // سيظهر "الرابط"
             ])
             ->filters([
                 //

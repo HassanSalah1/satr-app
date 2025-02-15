@@ -19,12 +19,14 @@ class AuthorResource extends Resource
     protected static ?string $model = Author::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
-
+    protected static ?string $modelLabel = 'شيخ';
+    protected static ?string $pluralModelLabel = "الشيوخ";
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('name')
+                    ->label(__('name'))
                     ->required()
                     ->maxLength(255),
             ]);
@@ -34,7 +36,7 @@ class AuthorResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->sortable()->searchable(),
+                TextColumn::make('name')->label(__('name'))->sortable()->searchable(),
             ])
             ->filters([
                 //
@@ -60,7 +62,7 @@ class AuthorResource extends Resource
     {
         return [
             'index' => Pages\ListAuthors::route('/'),
-            'create' => Pages\CreateAuthor::route('/create'),
+//            'create' => Pages\CreateAuthor::route('/create'),
             'edit' => Pages\EditAuthor::route('/{record}/edit'),
         ];
     }

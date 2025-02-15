@@ -20,13 +20,21 @@ class PageResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-document';
 
+    protected static ?string $modelLabel = 'صفحة';
+    protected static ?string $pluralModelLabel = "الصفحات";
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->required()->maxLength(255),
-                TextInput::make('slug')->unique()->required()->maxLength(255),
-                RichEditor::make('body')->required(),
+                TextInput::make('name')->label(__('name'))->required()->maxLength(255),
+                TextInput::make('slug')
+                    ->label(__('slug'))
+                    ->unique()
+                    ->required()
+                    ->maxLength(255)
+                ->disabledOn('edit'),
+                RichEditor::make('body')->label(__('body'))->required()->columnSpanFull()
             ]);
     }
 
@@ -34,8 +42,8 @@ class PageResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->sortable()->searchable(),
-                TextColumn::make('slug')->sortable(),
+                TextColumn::make('name')->label(__('name'))->sortable()->searchable(),
+                TextColumn::make('slug')->label(__('slug'))->sortable(),
             ])
             ->filters([
                 //
@@ -61,8 +69,8 @@ class PageResource extends Resource
     {
         return [
             'index' => Pages\ListPages::route('/'),
-            'create' => Pages\CreatePage::route('/create'),
-            'edit' => Pages\EditPage::route('/{record}/edit'),
+//            'create' => Pages\CreatePage::route('/create'),
+//            'edit' => Pages\EditPage::route('/{record}/edit'),
         ];
     }
 }

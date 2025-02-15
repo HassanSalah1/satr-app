@@ -26,14 +26,16 @@ class DonationResource extends Resource
     protected static ?string $model = Donation::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $modelLabel = 'متبرع';
+    protected static ?string $pluralModelLabel = "المتبرعون";
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->required()->maxLength(255),
-                TextInput::make('link')->url()->maxLength(255),
-                FileUpload::make('image')->image(),
+                TextInput::make('name')->label(__('name'))->required()->maxLength(255),
+                TextInput::make('link')->label(__('link'))->url()->maxLength(255),
+                FileUpload::make('image')->label(__('image'))->image(),
             ]);
     }
 
@@ -69,8 +71,8 @@ class DonationResource extends Resource
     {
         return [
             'index' => Pages\ListDonations::route('/'),
-            'create' => Pages\CreateDonation::route('/create'),
-            'edit' => Pages\EditDonation::route('/{record}/edit'),
+//            'create' => Pages\CreateDonation::route('/create'),
+//            'edit' => Pages\EditDonation::route('/{record}/edit'),
         ];
     }
 }

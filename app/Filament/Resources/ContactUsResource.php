@@ -20,6 +20,14 @@ class ContactUsResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
 
+    protected static ?string $modelLabel = 'تواصل';
+    protected static ?string $pluralModelLabel = "تواصل معنا";
+
+    public static function canCreate(): bool
+    {
+        return  false;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -35,22 +43,22 @@ class ContactUsResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->sortable()->searchable(),
-                TextColumn::make('email')->sortable()->searchable(),
-                TextColumn::make('mobile')->sortable(),
-                TextColumn::make('message')->limit(50),
+                TextColumn::make('name')->label(__('name'))->sortable()->searchable(),
+                TextColumn::make('email')->label(__('email'))->sortable()->searchable(),
+                TextColumn::make('mobile')->label(__('mobile'))->sortable(),
+                TextColumn::make('message')->label(__('message'))->limit(50),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+
                 ]),
-            ]);
+            ])->headerActions([]);
     }
 
     public static function getRelations(): array
@@ -64,8 +72,6 @@ class ContactUsResource extends Resource
     {
         return [
             'index' => Pages\ListContactUs::route('/'),
-            'create' => Pages\CreateContactUs::route('/create'),
-            'edit' => Pages\EditContactUs::route('/{record}/edit'),
         ];
     }
 }

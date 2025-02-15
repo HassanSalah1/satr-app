@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fi-sidebar {
+    background-color: red;
+}
+html {
+    direction: rtl;
+    text-align: right;
+}
