@@ -25,6 +25,18 @@ class SpeechResource extends Resource
     protected static ?string $modelLabel = 'خطبة'; // سيظهر "خطاب" في الواجهة
     protected static ?string $pluralModelLabel = "الخطب"; // سيظهر "الخطابات" في الواجهة
 
+    public static function getBreadcrumb(): string
+    {
+        return 'الخطب';
+    }
+
+    public static function getBreadcrumbs(): array
+    {
+        return [
+            url()->current() => 'الخطب',
+            route('filament.admin.pages.dashboard') => 'القائمة الرئيسية',
+        ];
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -50,7 +62,13 @@ class SpeechResource extends Resource
                 TextInput::make('link')->label(__('link'))->required()->url()->maxLength(255),
                 Toggle::make('status')->label(__('status'))->default(true),
                 Toggle::make('featured')->label(__('featured')),
-                FileUpload::make('image')->label(__('image'))->image(),
+                FileUpload::make('image')
+                    ->label(__('image'))
+                    ->image()
+                    ->maxSize(2048)
+                    ->validationMessages([
+                        'maxSize' => 'حجم الملف يجب ألا يتجاوز 2 ميجابايت.',
+                    ])
             ]);
     }
 

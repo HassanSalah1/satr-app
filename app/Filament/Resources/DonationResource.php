@@ -27,7 +27,7 @@ class DonationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $modelLabel = 'حملات تبرع';
-    protected static ?string $pluralModelLabel = "المتبرعون";
+    protected static ?string $pluralModelLabel = "حملات التبرع";
 
     public static function form(Form $form): Form
     {

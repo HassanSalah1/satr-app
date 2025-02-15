@@ -35,7 +35,14 @@ class AppSettings extends SettingsPage
                 Forms\Components\TextInput::make('instagram')->label(__('settings.instagram'))->url(),
                 Forms\Components\TextInput::make('site_url')->label(__('settings.site_url'))->url()->required(),
                 Forms\Components\TextInput::make('facebook')->label(__('settings.facebook'))->url(),
-                Forms\Components\FileUpload::make('logo')->label(__('settings.logo'))->image(),
+                Forms\Components\FileUpload::make('logo')
+                    ->required()
+                    ->label(__('settings.logo'))
+                    ->image()
+                    ->maxSize(2048)
+                    ->validationMessages([
+                        'maxSize' => 'حجم الملف يجب ألا يتجاوز 2 ميجابايت.',
+                    ])
             ]);
     }
 }
