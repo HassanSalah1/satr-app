@@ -26,7 +26,7 @@ class DonationResource extends Resource
     protected static ?string $model = Donation::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $modelLabel = 'متبرع';
+    protected static ?string $modelLabel = 'حملات تبرع';
     protected static ?string $pluralModelLabel = "المتبرعون";
 
     public static function form(Form $form): Form
@@ -43,9 +43,9 @@ class DonationResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->sortable()->searchable(),
-                ImageColumn::make('image'),
-                TextColumn::make('link')->limit(50),
+                TextColumn::make('name')->label(__('name'))->sortable()->searchable(),
+                ImageColumn::make('image')->label(__('image')),
+                TextColumn::make('link')->label(__('link'))->limit(50),
             ])
             ->filters([
                 //

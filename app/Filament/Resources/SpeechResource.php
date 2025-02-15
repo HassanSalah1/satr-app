@@ -40,7 +40,7 @@ class SpeechResource extends Resource
                     ->searchable()
                     ->required()
                     ->createOptionForm([
-                        TextInput::make('name')->required(),
+                        TextInput::make('name')->label(__('name'))->required(),
                     ])
                     ->createOptionUsing(function (array $data) {
                         $author = Author::create($data);

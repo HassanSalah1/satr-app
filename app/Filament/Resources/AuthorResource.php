@@ -21,6 +21,10 @@ class AuthorResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-user';
     protected static ?string $modelLabel = 'شيخ';
     protected static ?string $pluralModelLabel = "الشيوخ";
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false; // إخفاء Resource بالكامل من القائمة الجانبية
+    }
     public static function form(Form $form): Form
     {
         return $form

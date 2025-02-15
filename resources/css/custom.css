@@ -1,10 +1,11 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* الوضع العادي */
 .filament-sidebar {
-    background-color: #5ea49a !important; /* اللون الأساسي */
+    background-color: #71689E !important; /* اللون الأساسي */
 }
 
 .filament-main-content {
@@ -17,7 +18,7 @@
 }
 
 .dark .filament-main-content {
-    background-color: #111827 !important; /* لون خلفية المحتوى */
+    background-color: #71689E !important; /* لون خلفية المحتوى */
 }
 
 /* تغيير لون النص */
