@@ -21,7 +21,7 @@ class PageResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-document';
 
     protected static ?string $modelLabel = 'صفحة';
-    protected static ?string $pluralModelLabel = "الصفحات";
+    protected static ?string $pluralModelLabel = "الصفحات التعريفية";
 
     public static function form(Form $form): Form
     {

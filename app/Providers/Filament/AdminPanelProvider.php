@@ -35,14 +35,14 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            //->viteTheme('resources/css/custom.css')
+            ->viteTheme('resources/css/filament/theme.css')
             ->colors([
                 'primary' => '#5ea49a', // لون الأزرار والعناصر الأساسية
                 'secondary' => '#7861a5', // لون العناصر الثانوية
             ])
 
             ->brandName('سطر')
-            ->brandLogo(asset('images/logo.png'))
+            ->brandLogo(asset('images/logo-white.png'))
             //->theme(Theme::make()->dark())
             //->viteTheme('resources/css/app.css')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

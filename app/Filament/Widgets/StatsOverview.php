@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Author;
+use App\Models\ContactUs;
 use App\Models\Donation;
 use App\Models\Speech;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
@@ -25,6 +26,10 @@ class StatsOverview extends BaseWidget
                 ->description('إجمالي عدد المتبرعين')
                 ->color('primary')
                 ->icon('heroicon-o-rectangle-stack'),
+            Stat::make('عدد الرسائل', ContactUs::count())
+                ->description('إجمالي عدد رسائل تواصل معنا')
+                ->color('primary')
+                ->icon('heroicon-o-envelope'),
         ];
     }
 }
