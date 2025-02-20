@@ -28,6 +28,7 @@ class AppSettings extends SettingsPage
         return $form
             ->schema([
                 Forms\Components\TextInput::make('site_name')->label(__('settings.site_name'))->required(),
+                Forms\Components\TextInput::make('app_version')->label(__('settings.app_version'))->default(1)->required(),
                 Forms\Components\Textarea::make('site_description')->label(__('settings.site_description'))->required(),
                 Forms\Components\TextInput::make('email')->label(__('settings.email'))->email()->required(),
                 Forms\Components\TextInput::make('phone')->label(__('settings.phone'))->required(),

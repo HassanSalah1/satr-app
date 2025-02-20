@@ -5,7 +5,7 @@ use App\Http\Controllers\Api\DonationController;
 use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\AuthController;
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers\Api\HomeController;
 Route::middleware('api')->group(function () {
     Route::get('/speeches', [SpeechController::class, 'index']);
     Route::get('/speeches/{speech}', [SpeechController::class, 'show']);
@@ -19,5 +19,7 @@ Route::middleware('api')->group(function () {
     Route::post('/contact-us', [ContactUsController::class, 'store']);
     Route::post('/login', [AuthController::class, 'store']);
     Route::post('/check-code', [AuthController::class, 'checkCode']);
+
+    Route::get('/settings', [HomeController::class, 'setting']);
 });
 
